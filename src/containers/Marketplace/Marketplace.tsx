@@ -16,6 +16,7 @@ export const MarketplaceContainer: React.FC<MarketplaceProps> = ({ cards, classN
       <MarketplaceCard
         key={card.title}
         title={card.title}
+        href={card.href}
         description={card.description}
         image={card.image}
         author={card.author}

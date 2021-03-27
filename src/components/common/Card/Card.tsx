@@ -1,12 +1,15 @@
 import React from 'react';
+import Link from 'next/link';
 import cx from 'classnames';
 import Shiitake from 'shiitake';
+import { motion } from 'framer-motion';
 
 import { Author } from '@components/common/Author';
 
 import s from './Card.module.sass';
 
 type CardProps = {
+  href?: string
   title: string
   description: string
   image: string
@@ -18,6 +21,7 @@ type CardProps = {
 };
 
 export const Card: React.FC<CardProps> = ({
+  href,
   title,
   description,
   image,
@@ -31,7 +35,16 @@ export const Card: React.FC<CardProps> = ({
   );
 
   return (
-    <div className={compoundClassName}>
+    <motion.div
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.97 }}
+      className={compoundClassName}
+    >
+      {href && (
+        <Link href="/marketplace-single">
+          <a className={s.link} />
+        </Link>
+      )}
       <div className={s.imageWrapper}>
         <img src={image} alt={title} />
         <Author author={author} className={s.author} />
@@ -53,6 +66,6 @@ export const Card: React.FC<CardProps> = ({
         {description}
       </Shiitake>
       {children}
-    </div>
+    </motion.div>
   );
 };

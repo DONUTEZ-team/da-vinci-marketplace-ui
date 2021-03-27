@@ -22,6 +22,7 @@ const content = [
   {
     id: 0,
     title: 'incredibly rare shit right here.',
+    href: '/marketplace-single',
     description: 'A small desciption about the NFT token on a couple of lins',
     image: '/images/Marketplace1.jpg',
     author: {
@@ -33,6 +34,7 @@ const content = [
   {
     id: 1,
     title: 'Bone Masked Girl no.1',
+    href: '/marketplace-single',
     description: 'Its plant blooms when it is absorbing solar energy. It stays...',
     image: '/images/Marketplace2.jpg',
     author: {
@@ -44,6 +46,7 @@ const content = [
   {
     id: 2,
     title: 'Hands on Hands Collectible',
+    href: '/marketplace-single',
     description: 'The seed slowly grows larger. ',
     image: '/images/Marketplace3.jpg',
     author: {
@@ -56,6 +59,7 @@ const content = [
   {
     id: 3,
     title: 'Rarible Lighter',
+    href: '/marketplace-single',
     description: 'Purchase includes link to 4k png download.',
     image: '/images/Marketplace4.jpg',
     author: {

@@ -8,6 +8,7 @@ import s from './AuctionCard.module.sass';
 
 export type AuctionCardProps = {
   title: string
+  href?: string
   description: string
   image: string
   author: {
@@ -22,6 +23,7 @@ export type AuctionCardProps = {
 
 export const AuctionCard: React.FC<AuctionCardProps> = ({
   title,
+  href,
   description,
   image,
   author,
@@ -32,6 +34,7 @@ export const AuctionCard: React.FC<AuctionCardProps> = ({
 }) => (
   <Card
     title={title}
+    href={href}
     description={description}
     image={image}
     author={author}
