@@ -1,11 +1,11 @@
 import React from 'react';
 import cx from 'classnames';
 
+import { MarketplaceContainer } from '@containers/Marketplace';
 import { Container } from '@components/ui/Container';
 import { Row } from '@components/ui/Row';
 import { Button } from '@components/ui/Button';
 import { Heading } from '@components/ui/Heading';
-import { MarketplaceCard } from '@components/common/MarketplaceCard';
 import BackgroundIcon from '@icons/BackgroundHomeMarketplace.svg';
 
 import s from './Marketplace.module.sass';
@@ -67,21 +67,7 @@ export const Marketplace: React.FC<MarketplaceProps> = ({ className }) => (
     <Container>
       <Row>
         <Heading title="Marketplace" items={58} />
-
-        <div className={s.cards}>
-          {content.map((card) => (
-            <MarketplaceCard
-              key={card.id}
-              title={card.title}
-              description={card.description}
-              image={card.image}
-              author={card.author}
-              className={s.card}
-              price={card.price}
-              isSold={card.isSold}
-            />
-          ))}
-        </div>
+        <MarketplaceContainer cards={content} />
         <Button className={s.button}>All items (52)</Button>
       </Row>
     </Container>

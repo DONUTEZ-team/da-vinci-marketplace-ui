@@ -6,7 +6,7 @@ import { Button } from '@components/ui/Button';
 
 import s from './AuctionCard.module.sass';
 
-type MarketplaceCardProps = {
+export type AuctionCardProps = {
   title: string
   description: string
   image: string
@@ -14,18 +14,20 @@ type MarketplaceCardProps = {
     name: string
     image: string
   }
-  lastBid: number,
-  timeLeft: number,
+  lastBid: number
+  timeLeft: number
+  isSold?: boolean
   className?: string
 };
 
-export const AuctionCard: React.FC<MarketplaceCardProps> = ({
+export const AuctionCard: React.FC<AuctionCardProps> = ({
   title,
   description,
   image,
   author,
   lastBid,
   timeLeft,
+  isSold = false,
   className,
 }) => (
   <Card
@@ -33,23 +35,26 @@ export const AuctionCard: React.FC<MarketplaceCardProps> = ({
     description={description}
     image={image}
     author={author}
-    className={cx(s.root, className)}
+    className={cx(s.root, { [s.disabled]: isSold }, className)}
   >
-    <div className={s.bidWrapper}>
-      Last bid:
-      <span className={s.bid}>
-        {lastBid}
-        {' '}
-        XTZ
-      </span>
-    </div>
-    <div className={s.timeWrapper}>
-      <span className={s.time}>
-        {timeLeft}
-        {' '}
-        mins left
-      </span>
-      <Button sizeT="medium" theme="blue">Bid</Button>
+    <div className={s.content}>
+      {isSold && (
+        <span className={s.sold}>Auction ended</span>
+      )}
+      <div className={s.bidWrapper}>
+        Last bid:
+        <span className={s.bid}>
+          {lastBid}
+          {' '}
+          XTZ
+        </span>
+      </div>
+      <div className={s.timeWrapper}>
+        <span className={s.time}>
+          {isSold ? 'Ended' : `${timeLeft} mins left`}
+        </span>
+        <Button className={s.button} sizeT="medium" theme="blue">Bid</Button>
+      </div>
     </div>
   </Card>
 );

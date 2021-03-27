@@ -1,16 +1,16 @@
 import React from 'react';
 import cx from 'classnames';
 
+import { AuctionContainer } from '@containers/Auction';
 import { Container } from '@components/ui/Container';
 import { Row } from '@components/ui/Row';
 import { Heading } from '@components/ui/Heading';
 import { Button } from '@components/ui/Button';
-import { AuctionCard } from '@components/common/AuctionCard';
 import BackgroundIcon from '@icons/BackgroundHomeAuction.svg';
 
 import s from './Auction.module.sass';
 
-const contentAuction = [
+const content = [
   {
     id: 4,
     title: 'The Signal',
@@ -34,6 +34,7 @@ const contentAuction = [
     },
     lastBid: 28,
     timeLeft: 56,
+    isSold: true,
   },
   {
     id: 2,
@@ -71,21 +72,7 @@ export const Auction: React.FC<AuctionProps> = ({ className }) => (
     <Container>
       <Row>
         <Heading title="Auction" items={13} theme="orange" />
-
-        <div className={s.cards}>
-          {contentAuction.map((card) => (
-            <AuctionCard
-              key={card.id}
-              title={card.title}
-              description={card.description}
-              image={card.image}
-              author={card.author}
-              className={s.card}
-              lastBid={card.lastBid}
-              timeLeft={card.timeLeft}
-            />
-          ))}
-        </div>
+        <AuctionContainer cards={content} />
         <Button className={s.button}>All items (13)</Button>
       </Row>
     </Container>
