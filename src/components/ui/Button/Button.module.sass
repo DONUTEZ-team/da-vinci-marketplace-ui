@@ -1,0 +1,41 @@
+@import "@styles/variables"
+@import "@styles/breakpoints"
+
+.root
+  box-shadow: none
+  border: none
+  background-color: transparent
+  outline: none
+  cursor: pointer
+  padding: 10px 20px
+  text-align: center
+  font-size: 1rem
+  line-height: 1.22
+  font-family: $font
+  font-weight: bold
+  text-overflow: ellipsis
+  overflow: hidden
+  white-space: nowrap
+  transition: background-color $animationTime, color $animationTime, border-color $animationTime
+  min-width: 120px
+  border-radius: 20px
+  &:disabled
+    cursor: not-allowed
+
+.purple
+  background: $linear-purple
+  color: $light
+  &:active, &:focus
+    // TODO: Customize
+
+.green
+  background: $linear-green
+  color: $primary-1
+
+.blue
+  background: $linear-blue
+  color: $primary-1
+
+.medium
+  padding: 7px 17px
+  font-size: 0.875rem
