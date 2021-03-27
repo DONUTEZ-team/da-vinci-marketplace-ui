@@ -1,6 +1,29 @@
 @import "@styles/variables"
 @import "@styles/breakpoints"
 
+.content
+  margin-top: auto
+  position: relative
+
+.sold
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%) rotate(-12deg)
+  border-radius: 14px
+  text-transform: uppercase
+  padding: 10px 20px
+  box-sizing: border-box
+  white-space: nowrap
+  border: 5px solid #64C7AA
+  font-size: 1.25rem
+  font-weight: bold
+  color: rgb(12, 80, 255)
+  background: $linear-green
+  -webkit-background-clip: text
+  -webkit-text-fill-color: transparent
+  z-index: 2
+
 .bidWrapper
   margin-top: 15px
 
@@ -13,7 +36,6 @@
   -webkit-text-fill-color: transparent
 
 .timeWrapper
-  margin-top: auto
   padding-top: 40px
   display: flex
   width: 100%
@@ -36,3 +58,13 @@
   background: $linear-purple-soft
   -webkit-background-clip: text
   -webkit-text-fill-color: transparent
+
+.button
+  margin-left: auto
+
+.disabled
+  .bidWrapper, .timeWrapper
+    opacity: .3
+  .timeWrapper
+    &::after
+      opacity: .3

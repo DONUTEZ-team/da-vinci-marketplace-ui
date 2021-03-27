@@ -6,7 +6,7 @@ import { Button } from '@components/ui/Button';
 
 import s from './MarketplaceCard.module.sass';
 
-type MarketplaceCardProps = {
+export type MarketplaceCardProps = {
   title: string
   description: string
   image: string
@@ -14,8 +14,8 @@ type MarketplaceCardProps = {
     name: string
     image: string
   }
-  price: number,
-  isSold?: boolean,
+  price: number
+  isSold?: boolean
   className?: string
 };
 
