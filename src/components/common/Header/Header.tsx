@@ -1,7 +1,9 @@
 import React, { useMemo } from 'react';
 import cx from 'classnames';
 import { useTranslation } from 'next-i18next';
+import Link from 'next/link';
 
+import { ConnectWallet } from '@containers/ConnectWallet';
 import { Container } from '@components/ui/Container';
 import { Row } from '@components/ui/Row';
 import { Button } from '@components/ui/Button';
@@ -42,7 +44,11 @@ export const Header: React.FC<HeaderProps> = ({
     <header className={cx(s.root, className)}>
       <Container>
         <Row>
-          <DaVinci className={s.logo} />
+          <Link href="/">
+            <a>
+              <DaVinci className={s.logo} />
+            </a>
+          </Link>
           <nav className={s.navigation}>
             {content.map((navLink) => (
               <HeaderLink
@@ -56,7 +62,8 @@ export const Header: React.FC<HeaderProps> = ({
           </nav>
           <div className={s.buttons}>
             <Button theme="green">Create</Button>
-            <Button className={s.button}>Connect wallet</Button>
+            <ConnectWallet className={s.button} />
+            {/* <Button className={s.button}>Connect wallet</Button> */}
           </div>
         </Row>
       </Container>
