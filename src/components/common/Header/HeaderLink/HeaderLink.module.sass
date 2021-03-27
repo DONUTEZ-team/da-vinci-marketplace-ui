@@ -2,6 +2,29 @@
 
 .root
   padding: 16px 20px
+  font-size: 1.25rem
+  font-weight: bold
+  position: relative
+  &::after
+    position: absolute
+    content: ''
+    bottom: 10px
+    left: 20px
+    width: 0
+    height: 2px
+    background: $linear-pink
+    transition: width $animationTime
+    border-radius: 5px
+  &:hover
+    &::after
+      width: 50px
 
 .active
-  color: $light
+  color: rgb(12, 80, 255)
+  background: $linear-blue
+  -webkit-background-clip: text
+  -webkit-text-fill-color: transparent
+  cursor: default
+  &::after
+    width: 50px
+    background: $linear-blue
