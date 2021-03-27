@@ -2,6 +2,8 @@ import React from 'react';
 import cx from 'classnames';
 import Shiitake from 'shiitake';
 
+import { Author } from '@components/common/Author';
+
 import s from './Card.module.sass';
 
 type CardProps = {
@@ -32,12 +34,7 @@ export const Card: React.FC<CardProps> = ({
     <div className={compoundClassName}>
       <div className={s.imageWrapper}>
         <img src={image} alt={title} />
-        <div className={s.author}>
-          <div className={s.authorImage}>
-            <img src={author.image} alt={author.name} />
-          </div>
-          <h5 className={s.authorHeader}>{author.name}</h5>
-        </div>
+        <Author author={author} className={s.author} />
       </div>
       <Shiitake
         lines={1}

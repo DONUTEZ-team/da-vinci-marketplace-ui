@@ -44,7 +44,14 @@ export const MarketplaceCard: React.FC<MarketplaceCardProps> = ({
         {' '}
         XTZ
       </span>
-      <Button className={s.button} sizeT="medium" theme="green">Purchase</Button>
+      <Button
+        className={s.button}
+        sizeT="medium"
+        theme="green"
+        disabledView={isSold}
+      >
+        Purchase
+      </Button>
     </div>
   </Card>
 );

@@ -53,7 +53,14 @@ export const AuctionCard: React.FC<AuctionCardProps> = ({
         <span className={s.time}>
           {isSold ? 'Ended' : `${timeLeft} mins left`}
         </span>
-        <Button className={s.button} sizeT="medium" theme="blue">Bid</Button>
+        <Button
+          className={s.button}
+          sizeT="medium"
+          theme="blue"
+          disabledView={isSold}
+        >
+          Bid
+        </Button>
       </div>
     </div>
   </Card>

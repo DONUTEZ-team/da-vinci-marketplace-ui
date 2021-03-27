@@ -9,6 +9,7 @@ type ButtonProps = {
   type?: 'button' | 'submit' | 'reset' | undefined
   theme?: keyof typeof themeClass
   sizeT?: keyof typeof sizeClass
+  disabledView?: boolean
   external?: boolean
   className?: string
 } & (
@@ -19,6 +20,7 @@ type ButtonProps = {
 
 const themeClass = {
   purple: s.purple,
+  purpleSoft: s.purpleSoft,
   green: s.green,
   blue: s.blue,
 };
@@ -34,12 +36,14 @@ export const Button: React.FC<ButtonProps> = ({
   theme = 'purple',
   sizeT = 'small',
   external = false,
+  disabledView,
   className,
   children,
   ...props
 }) => {
   const compoundClassName = cx(
     s.root,
+    { [s.disabled]: disabledView },
     themeClass[theme],
     sizeClass[sizeT],
     className,
