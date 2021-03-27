@@ -1,0 +1,46 @@
+<svg width="38" height="31" viewBox="0 0 38 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#Weather-filter0_i)">
+<rect x="14" width="24" height="24" rx="12" fill="url(#Weather-paint0_linear)"/>
+</g>
+<rect x="14.25" y="0.25" width="23.5" height="23.5" rx="11.75" stroke="url(#Weather-paint1_linear)" stroke-width="0.5"/>
+<g filter="url(#Weather-filter1_bi)">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M7 31C3.13401 31 0 27.866 0 24C0 20.4732 2.60822 17.5555 6.00099 17.0707L6 17C6 13.134 9.13401 10 13 10C15.6378 10 17.9349 11.4591 19.1281 13.6142C20.0045 13.2196 20.9766 13 22 13C24.9667 13 27.5023 14.8455 28.5215 17.4511C29.2917 17.1597 30.1272 17 31 17C34.866 17 38 20.134 38 24C38 27.866 34.866 31 31 31H7Z" fill="#7DCCFF" fill-opacity="0.2"/>
+<path d="M6.03636 17.3182L6.25406 17.2871L6.25097 17.0672L6.25 16.9983C6.25094 13.2711 9.27265 10.25 13 10.25C15.5433 10.25 17.7584 11.6565 18.9094 13.7353L19.0209 13.9366L19.2308 13.8421C20.0755 13.4618 21.0127 13.25 22 13.25C24.8603 13.25 27.3057 15.0292 28.2886 17.5422L28.3787 17.7724L28.6099 17.6849C29.3524 17.4041 30.1579 17.25 31 17.25C34.7279 17.25 37.75 20.2721 37.75 24C37.75 27.7279 34.7279 30.75 31 30.75H7C3.27208 30.75 0.25 27.7279 0.25 24C0.25 20.5994 2.76498 17.7857 6.03636 17.3182Z" stroke="url(#Weather-paint2_linear)" stroke-width="0.5"/>
+</g>
+<defs>
+<filter id="Weather-filter0_i" x="14" y="0" width="24" height="24" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset/>
+<feGaussianBlur stdDeviation="5"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.4 0"/>
+<feBlend mode="normal" in2="shape" result="effect1_innerShadow"/>
+</filter>
+<filter id="Weather-filter1_bi" x="-5.43656" y="4.56344" width="48.8731" height="31.8731" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feGaussianBlur in="BackgroundImage" stdDeviation="2.71828"/>
+<feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset/>
+<feGaussianBlur stdDeviation="2"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.3 0"/>
+<feBlend mode="normal" in2="shape" result="effect2_innerShadow"/>
+</filter>
+<linearGradient id="Weather-paint0_linear" x1="14" y1="0" x2="14" y2="24" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FF9600"/>
+<stop offset="1" stop-color="#FF6000"/>
+</linearGradient>
+<linearGradient id="Weather-paint1_linear" x1="14" y1="0" x2="14" y2="24" gradientUnits="userSpaceOnUse">
+<stop stop-color="white" stop-opacity="0.4"/>
+<stop offset="1" stop-color="white" stop-opacity="0.01"/>
+</linearGradient>
+<linearGradient id="Weather-paint2_linear" x1="0" y1="10" x2="0" y2="31" gradientUnits="userSpaceOnUse">
+<stop stop-color="white" stop-opacity="0.3"/>
+<stop offset="1" stop-color="white" stop-opacity="0.13"/>
+</linearGradient>
+</defs>
+</svg>
