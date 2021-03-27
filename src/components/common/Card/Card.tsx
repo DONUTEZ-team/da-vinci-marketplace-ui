@@ -1,5 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
+import Shiitake from 'shiitake';
 
 import s from './Card.module.sass';
 
@@ -38,8 +39,22 @@ export const Card: React.FC<CardProps> = ({
           <h5 className={s.authorHeader}>{author.name}</h5>
         </div>
       </div>
-      <h3 className={s.title}>{title}</h3>
-      <p className={s.description}>{description}</p>
+      <Shiitake
+        lines={1}
+        throttleRate={200}
+        className={s.title}
+        tagName="h3"
+      >
+        {title}
+      </Shiitake>
+      <Shiitake
+        lines={2}
+        throttleRate={200}
+        className={s.description}
+        tagName="p"
+      >
+        {description}
+      </Shiitake>
       {children}
     </div>
   );

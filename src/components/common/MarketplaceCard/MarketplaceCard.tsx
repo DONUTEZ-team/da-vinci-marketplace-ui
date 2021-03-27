@@ -15,6 +15,7 @@ type MarketplaceCardProps = {
     image: string
   }
   price: number,
+  isSold?: boolean,
   className?: string
 };
 
@@ -24,6 +25,7 @@ export const MarketplaceCard: React.FC<MarketplaceCardProps> = ({
   image,
   author,
   price,
+  isSold,
   className,
 }) => (
   <Card
@@ -31,15 +33,18 @@ export const MarketplaceCard: React.FC<MarketplaceCardProps> = ({
     description={description}
     image={image}
     author={author}
-    className={cx(s.root, className)}
+    className={cx(s.root, { [s.disabled]: isSold }, className)}
   >
     <div className={s.prices}>
+      {isSold && (
+        <span className={s.sold}>Sold Out</span>
+      )}
       <span className={s.price}>
         {price}
         {' '}
         XTZ
       </span>
-      <Button sizeT="medium" theme="green">Purchase</Button>
+      <Button className={s.button} sizeT="medium" theme="green">Purchase</Button>
     </div>
   </Card>
 );

@@ -1,0 +1,25 @@
+<svg width="367" height="498" viewBox="0 0 367 498" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#BackgroundHomeBackground-clip0)">
+<path d="M404.1 0C289.1 2.5 49.2998 48.7 10.0998 213.5C-38.9002 419.5 179.1 198.5 254.6 338C330.1 477.5 355.6 541 394.1 458" stroke="url(#BackgroundHomeMarketplace-paint0_linear)" stroke-width="5"/>
+<path d="M380.6 33C289.999 34.9644 101.076 71.2666 70.1933 200.76C31.5895 362.627 203.337 188.974 262.819 298.587C322.3 408.201 342.39 458.097 372.721 392.879" stroke="url(#BackgroundHomeMarketplace-paint1_linear)" stroke-width="5"/>
+<circle cx="152.1" cy="230.5" r="8.5" fill="#7345F0"/>
+<circle cx="47.0999" cy="294.5" r="2.5" fill="#4438ED"/>
+<circle cx="242.1" cy="218.5" r="4.5" fill="#7345F0"/>
+<circle cx="111.1" cy="227.5" r="3.5" fill="#4438ED"/>
+<circle cx="263.1" cy="266.5" r="3.5" fill="#4438ED"/>
+<circle cx="201.1" cy="199.5" r="1.5" fill="#7345F0"/>
+</g>
+<defs>
+<linearGradient id="BackgroundHomeMarketplace-paint0_linear" x1="3" y1="247.531" x2="404.1" y2="247.531" gradientUnits="userSpaceOnUse">
+<stop stop-color="#7445F0"/>
+<stop offset="1" stop-color="#4338E3"/>
+</linearGradient>
+<linearGradient id="BackgroundHomeMarketplace-paint1_linear" x1="64.5999" y1="227.5" x2="380.6" y2="227.5" gradientUnits="userSpaceOnUse">
+<stop stop-color="#7445F0"/>
+<stop offset="1" stop-color="#4338E3"/>
+</linearGradient>
+<clipPath id="BackgroundHomeBackground-clip0">
+<rect width="367" height="498" fill="white"/>
+</clipPath>
+</defs>
+</svg>
