@@ -1,17 +1,14 @@
 import React from 'react';
-import cx from 'classnames';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { NextSeo } from 'next-seo';
 
 import { BaseLayout } from '@layouts/BaseLayout';
-import { Row } from '@components/ui/Row';
-import { Container } from '@components/ui/Container';
-
-import s from '@styles/Home.module.sass';
 import { FirstScreen } from '@components/home/FirstScreen';
 import { Marketplace } from '@components/home/Marketplace';
 import { Auction } from '@components/home/Auction';
+
+import s from '@styles/Home.module.sass';
 
 const Home: React.FC = () => {
   const { t } = useTranslation(['common', 'home']);

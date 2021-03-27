@@ -1,13 +1,10 @@
 import React from 'react';
 import cx from 'classnames';
 
+import { Container } from '@components/ui/Container';
+import { Row } from '@components/ui/Row';
 import MainIllustration from '@icons/MainIllustration.svg';
 
-import { Row } from '@components/ui/Row';
-import { Auction } from '@components/home/Auction';
-import { Container } from '@components/ui/Container';
-import { NextSeo } from 'next-seo';
-import { BaseLayout } from '@layouts/BaseLayout';
 import s from './FirstScreen.module.sass';
 
 type FirstScreenProps = {
