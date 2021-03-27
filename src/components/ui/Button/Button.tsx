@@ -2,6 +2,7 @@
 import React from 'react';
 import Link, { LinkProps } from 'next/link';
 import cx from 'classnames';
+import { motion } from 'framer-motion';
 
 import s from './Button.module.sass';
 
@@ -65,19 +66,27 @@ export const Button: React.FC<ButtonProps> = ({
 
     return (
       <Link {...(props as LinkProps)}>
-        <a className={compoundClassName}>{children}</a>
+        <motion.a
+          className={compoundClassName}
+          whileHover={{ scale: 1.04 }}
+          whileTap={{ scale: 0.97 }}
+        >
+          {children}
+        </motion.a>
       </Link>
     );
   }
 
   return (
-    <button
+    <motion.button
       // @ts-ignore
       type={type}
       {...(props as React.HTMLProps<HTMLButtonElement>)}
       className={compoundClassName}
+      whileHover={{ scale: 1.04 }}
+      whileTap={{ scale: 0.97 }}
     >
       {children}
-    </button>
+    </motion.button>
   );
 };

@@ -8,6 +8,7 @@ import s from './MarketplaceCard.module.sass';
 
 export type MarketplaceCardProps = {
   title: string
+  href?: string
   description: string
   image: string
   author: {
@@ -21,6 +22,7 @@ export type MarketplaceCardProps = {
 
 export const MarketplaceCard: React.FC<MarketplaceCardProps> = ({
   title,
+  href,
   description,
   image,
   author,
@@ -30,6 +32,7 @@ export const MarketplaceCard: React.FC<MarketplaceCardProps> = ({
 }) => (
   <Card
     title={title}
+    href={href}
     description={description}
     image={image}
     author={author}

@@ -24,15 +24,18 @@
   margin-top: -7px
   margin-bottom: -7px
   color: $light
-  transition: color $animationTime
+  transition: background $animationTime
   font-weight: 500
   display: flex
   justify-content: center
   align-items: center
   &:not(:last-child)
     margin-right: 20px
-  &:not(.dots):hover
-    color: $light
+  &:not(.dots):not(.currentPage):hover
+    color: rgb(12, 80, 255)
+    background: $linear-blue
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
 
 .dots
   margin-right: 8px
