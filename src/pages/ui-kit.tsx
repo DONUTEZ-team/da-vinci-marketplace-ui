@@ -45,6 +45,7 @@ const content = [
       name: 'Carlos Mayve',
     },
     price: 80000,
+    isSold: true,
   },
   {
     id: 3,
@@ -74,7 +75,7 @@ const contentAuction = [
   },
   {
     id: 1,
-    title: '"Beyond the Seventh Heaven" S...',
+    title: '"Beyond the Seventh Heaven" Some words to take 2 lines',
     description: '"Dumb Presidents" collection #02.a. Clown in chief.',
     image: '/images/Auction2.jpg',
     author: {
@@ -155,6 +156,7 @@ const UiKit: React.FC = () => (
               author={card.author}
               className={s.card}
               price={card.price}
+              isSold={card.isSold}
             />
           ))}
           {contentAuction.map((card) => (

@@ -1,0 +1,35 @@
+<svg width="1001" height="544" viewBox="0 0 1001 544" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#BackgroundHomeAuction-clip0)">
+<path d="M-47.5 59.7897C-5.5 26.2897 100.5 -28.9103 188.5 18.2897C276.5 65.4897 67.8333 298.623 -47.5 409.29" stroke="url(#BackgroundHomeAuction-paint0_linear)" stroke-width="5"/>
+<path d="M-49 98.8279C-15.999 72.4725 67.2891 29.0451 136.434 66.1787C205.579 103.312 41.6217 286.725 -49 373.79" stroke="url(#BackgroundHomeAuction-paint1_linear)" stroke-width="5"/>
+<path d="M-63 775.789C-56.3511 649.567 -92.8696 388.066 330 377.789C858.587 364.944 566.5 728.79 1001 377.789" stroke="url(#BackgroundHomeAuction-paint2_linear)" stroke-width="5"/>
+<circle cx="211.5" cy="499.29" r="8.5" fill="#BC67C8"/>
+<circle cx="63.5" cy="478.29" r="4.5" fill="#7345F0"/>
+<circle cx="301.5" cy="487.29" r="4.5" fill="#7345F0"/>
+<circle cx="170.5" cy="496.29" r="3.5" fill="#E76FCF"/>
+<circle cx="322.5" cy="535.29" r="3.5" fill="#63C593"/>
+<circle cx="110.5" cy="512.29" r="1.5" fill="#7345F0"/>
+<circle cx="260.5" cy="468.29" r="1.5" fill="#7345F0"/>
+<circle cx="14.9432" cy="81.6991" r="8.5" transform="rotate(93.5096 14.9432 81.6991)" fill="#EA9658"/>
+<circle cx="22.0044" cy="214.794" r="8.5" transform="rotate(93.5096 22.0044 214.794)" fill="#EBC971"/>
+<circle cx="34.7077" cy="131.497" r="3.5" transform="rotate(93.5096 34.7077 131.497)" fill="#E76FCF"/>
+<circle cx="30.8632" cy="361.198" r="3.5" transform="rotate(93.5096 30.8632 361.198)" fill="#EBBF6C"/>
+</g>
+<defs>
+<linearGradient id="BackgroundHomeAuction-paint0_linear" x1="-47.5" y1="204.645" x2="209.583" y2="204.645" gradientUnits="userSpaceOnUse">
+<stop stop-color="#EBCD72"/>
+<stop offset="1" stop-color="#EA9055"/>
+</linearGradient>
+<linearGradient id="BackgroundHomeAuction-paint1_linear" x1="-49" y1="212.79" x2="153" y2="212.79" gradientUnits="userSpaceOnUse">
+<stop stop-color="#EBCD72"/>
+<stop offset="1" stop-color="#EA9055"/>
+</linearGradient>
+<linearGradient id="BackgroundHomeAuction-paint2_linear" x1="-63" y1="576.622" x2="1001" y2="576.622" gradientUnits="userSpaceOnUse">
+<stop stop-color="#F28EDD"/>
+<stop offset="1" stop-color="#BE33A8"/>
+</linearGradient>
+<clipPath id="BackgroundHomeAuction-clip0">
+<rect width="1001" height="544" fill="white"/>
+</clipPath>
+</defs>
+</svg>
