@@ -172,6 +172,7 @@ const UiKit: React.FC = () => (
               author={card.author}
               className={s.card}
               lastBid={card.lastBid}
+              minBidStep={card.minBidStep}
               timeLeft={card.timeLeft}
             />
           ))}
