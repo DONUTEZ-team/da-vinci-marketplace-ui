@@ -52,6 +52,7 @@ export const MarketplaceCard: React.FC<MarketplaceCardProps> = ({
         sizeT="medium"
         theme="green"
         disabledView={isSold}
+        href={href}
       >
         Purchase
       </Button>

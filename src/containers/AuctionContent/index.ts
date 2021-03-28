@@ -1,1 +1,1 @@
-export * from './MarketplaceContent';
+export * from './AuctionContent';

@@ -71,6 +71,7 @@ export const AuctionCard: React.FC<AuctionCardProps> = ({
           sizeT="medium"
           theme="blue"
           disabledView={isSold}
+          href={href}
         >
           Bid
         </Button>

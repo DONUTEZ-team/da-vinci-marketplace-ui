@@ -3,14 +3,13 @@ import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { NextSeo } from 'next-seo';
 
-// import { MarketplaceContainer } from '@containers/_Marketplace';
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@components/ui/Container';
 import { Row } from '@components/ui/Row';
 import { Heading } from '@components/ui/Heading';
 
 import s from '@styles/MarketplaceSingle.module.sass';
-import { MarketplaceContent } from '@containers/AuctionContent';
+import { AuctionContent } from '@containers/AuctionContent';
 
 const AuctionSinglePage: React.FC = () => {
   const { t } = useTranslation(['common', 'home']);
@@ -27,7 +26,7 @@ const AuctionSinglePage: React.FC = () => {
       />
       <Container>
         <Row className={s.row}>
-          <MarketplaceContent />
+          <AuctionContent />
           <Heading title="More by this author" />
           {/* <MarketplaceContainer cards={content} /> */}
         </Row>
