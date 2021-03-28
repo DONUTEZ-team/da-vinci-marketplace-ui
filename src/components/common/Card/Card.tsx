@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import Link from 'next/link';
 import cx from 'classnames';
 import Shiitake from 'shiitake';
@@ -34,6 +34,31 @@ export const Card: React.FC<CardProps> = ({
     className,
   );
 
+  const [imageFinal, setImageFinal] = useState('');
+
+  const download = useCallback(() => {
+    const url = image;
+    if (!url) return;
+
+    const req = new XMLHttpRequest();
+    // @ts-ignore
+    req.responseType = 'text/html';
+
+    req.onload = () => {
+      const img = new Image();
+      img.onload = function onload() {
+        document.body.appendChild(img);
+      };
+
+      setImageFinal(req.response);
+    };
+
+    req.open('GET', url, true);
+    req.send();
+  }, [image]);
+
+  download();
+
   return (
     <motion.div
       whileHover={{ scale: 1.05 }}
@@ -47,7 +72,7 @@ export const Card: React.FC<CardProps> = ({
         </Link>
       )}
       <div className={s.imageWrapper}>
-        <img src={image} alt={title} />
+        <img src={imageFinal} alt={title} />
         <Author author={author} className={s.author} />
       </div>
       <Shiitake

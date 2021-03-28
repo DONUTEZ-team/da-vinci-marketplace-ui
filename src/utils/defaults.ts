@@ -18,4 +18,4 @@ export const AUCTION_TOKEN_ADDRESS = process.env.NEXT_PUBLIC_AUCTION_TOKEN!;
 export const MARKETPLACE_TOKEN_ADDRESS = process.env.NEXT_PUBLIC_MARKETPLACE_TOKEN!;
 
 // Pagination settings
-export const ITEMS_PER_PAGE = 12;
+export const ITEMS_PER_PAGE = 4;

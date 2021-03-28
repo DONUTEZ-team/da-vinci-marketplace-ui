@@ -162,7 +162,7 @@ export const MarketplaceContainer: React.FC<MarketplaceProps> = ({
       {isHome
         ? (
           <Button
-            href="/auction"
+            href="/marketplace"
             className={s.button}
           >
             All items (

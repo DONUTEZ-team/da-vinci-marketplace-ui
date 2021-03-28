@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import cx from 'classnames';
 import { Button } from '@components/ui/Button';
 import { Author } from '@components/common/Author';
@@ -31,6 +31,8 @@ type FormValues = {
 export const AuctionContent: React.FC = () => {
   const tezos = useTezos();
   const accountPkh = useAccountPkh();
+
+  const [imageFinal, setImageFinal] = useState('');
 
   const router = useRouter();
   const { id } = router.query;
@@ -111,6 +113,29 @@ export const AuctionContent: React.FC = () => {
     { refreshInterval: BLOCK_INTERVAL },
   );
 
+  const download = useCallback(() => {
+    const url = data?.image;
+    if (!url) return;
+
+    const req = new XMLHttpRequest();
+    // @ts-ignore
+    req.responseType = 'text/html';
+
+    req.onload = () => {
+      const img = new Image();
+      img.onload = function onload() {
+        document.body.appendChild(img);
+      };
+
+      setImageFinal(req.response);
+    };
+
+    req.open('GET', url, true);
+    req.send();
+  }, [data?.image]);
+
+  download();
+
   // const onSubmit = useCallback(async () => {
   //   const contract = await tezos?.wallet.at(MARKETPLACE_TOKEN_ADDRESS);
   //   const operation = await contract?.methods
@@ -122,24 +147,21 @@ export const AuctionContent: React.FC = () => {
     values: FormValues,
     form: FormApi<FormValues>,
   ) => {
-    try {
-      if (tezos) {
-        console.log('inside');
-        const contract = await tezos?.wallet.at(AUCTION_TOKEN_ADDRESS);
-        console.log('contract');
-        const operation = await contract?.methods
-          .makeBid(data?.tokenId, values.bid)
-          .send();
-        console.log('operation');
-        await operation?.confirmation();
-
-        // @ts-ignore
-        // eslint-disable-next-line @typescript-eslint/no-implied-eval
-        setTimeout(form.restart);
-      }
-    } catch (e) {
-      console.log(e);
+    if (!tezos) {
+      return;
     }
+    console.log('inside');
+    const contract = await tezos?.wallet.at(AUCTION_TOKEN_ADDRESS);
+    console.log('contract', data?.tokenId);
+    const operation = await contract?.methods
+      .makeBid(data?.tokenId, +values.bid)
+      .send();
+    console.log('operation');
+    await operation?.confirmation();
+
+    // @ts-ignore
+    // eslint-disable-next-line @typescript-eslint/no-implied-eval
+    setTimeout(form.restart);
   }, [data?.tokenId, tezos]);
 
   if (error) {
@@ -152,7 +174,7 @@ export const AuctionContent: React.FC = () => {
   return (
     <div className={s.root}>
       <div className={s.imageWrapper}>
-        <img src={data?.image} alt={data?.title} />
+        <img src={imageFinal} alt={data?.title} />
       </div>
       <div className={s.socials}>
         <button type="button" className={s.social}>
