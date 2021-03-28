@@ -21,6 +21,7 @@ import { Input } from '@components/ui/Input';
 import { composeValidators, required } from '@utils/validators';
 import { Field, Form } from 'react-final-form';
 import { FormApi } from 'final-form';
+import BigNumber from 'bignumber.js';
 import s from './AuctionContent.module.sass';
 
 // Default stake value
@@ -152,10 +153,13 @@ export const AuctionContent: React.FC = () => {
     }
     console.log('inside');
     const contract = await tezos?.wallet.at(AUCTION_TOKEN_ADDRESS);
-    console.log('contract', data?.tokenId);
+    console.log('contract', +data?.tokenId);
     const operation = await contract?.methods
-      .makeBid(data?.tokenId, +values.bid)
-      .send();
+      .makeBid(data?.tokenId, new BigNumber(values.bid).multipliedBy(new BigNumber(10).pow(6)))
+      .send({
+        amount: new BigNumber(values.bid).multipliedBy(new BigNumber(10).pow(6)).toNumber(),
+        mutez: true,
+      });
     console.log('operation');
     await operation?.confirmation();
 
