@@ -86,7 +86,7 @@ export const MarketplaceContent: React.FC = () => {
     const contract = await tezos?.wallet.at(MARKETPLACE_TOKEN_ADDRESS);
     const operation = await contract?.methods
       .buy(data?.id)
-      .send({ amount: +data?.price + 500000, mutez: true });
+      .send({ amount: data?.price, mutez: true });
     await operation?.confirmation();
   }, [data?.id, data?.price, tezos?.wallet]);
 
