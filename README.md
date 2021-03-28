@@ -22,7 +22,7 @@ Live preview: https://da-vinci-marketplace-ui.vercel.app/
 
 
 
-**Contact:**
+**Contacts:**
 - [Github](https://github.com/olehkhalin)
 - [LinkedIn](https://www.linkedin.com/in/olegkhalin/)
 - [Facebook](https://www.facebook.com/olehkhalin/)
