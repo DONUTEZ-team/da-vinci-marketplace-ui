@@ -9,6 +9,7 @@ export type InputProps = {
   error?: string
   textarea?: boolean
   success?: boolean
+  labelClassName?: string
   inputClassName?: string
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
@@ -21,13 +22,13 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(({
   value,
   textarea = false,
   success = false,
+  labelClassName,
   ...props
 }, ref) => {
   const [focused, setFocused] = useState(false);
   const [hovered, setHovered] = useState(false);
   const compoundClassName = cx(
     s.inputWrapper,
-    inputClassName,
     { [s.focused]: focused },
     { [s.hovered]: hovered },
     { [s.errorInput]: !!error },
@@ -68,7 +69,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(({
     // eslint-disable-next-line jsx-a11y/label-has-associated-control
     <label className={cx(s.root, className, { [s.error]: error })}>
       {label && (
-        <span className={s.label}>{label}</span>
+        <span className={cx(s.label, labelClassName)}>{label}</span>
       )}
       <div className={compoundClassName}>
         <input
@@ -76,7 +77,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(({
           ref={ref}
           type={type}
           value={value}
-          className={s.input}
+          className={cx(s.input, inputClassName)}
           onMouseOver={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
           onFocus={() => setFocused(true)}

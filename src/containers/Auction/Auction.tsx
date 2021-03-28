@@ -94,9 +94,14 @@ export const AuctionContainer: React.FC<AuctionProps> = ({
         } = tokenParams;
 
         const newFinalDate: Date = new Date(createdAt);
-        newFinalDate.setSeconds(newFinalDate.getSeconds() + lifetime);
-        // @ts-ignore
-        const finalTimeLeft = Math.floor((Math.abs(newFinalDate - new Date()) / 1000) / 60);
+        const ourSecs = +newFinalDate.getSeconds();
+        const plusSecs = +lifetime;
+        newFinalDate.setSeconds(ourSecs + plusSecs);
+
+        const finalTimeLeft = finished
+          ? 0
+          // @ts-ignore
+          : Math.floor(((newFinalDate - new Date()) / 1000) / 60);
 
         const tokenMetaRecord = await tokenMetadata.get(tokenId.toString());
         const { extras } = tokenMetaRecord;
@@ -107,7 +112,7 @@ export const AuctionContainer: React.FC<AuctionProps> = ({
         const parsedMeta = JSON.parse(hex2a(metadata));
 
         resultItems.push({
-          id: tokenId.toString(),
+          id: i.toString(),
           image: parsedMeta.link,
           title: parsedMeta.title,
           description: parsedMeta.description,
@@ -117,7 +122,7 @@ export const AuctionContainer: React.FC<AuctionProps> = ({
             : tezos.format('mutez', 'tz', lastBid.bid).toString(),
           lifetime: finalTimeLeft,
           minBidStep: tezos.format('mutez', 'tz', minBidStep).toString(),
-          isSold: finished,
+          isSold: finished || finalTimeLeft < 0,
         });
       }
 
@@ -155,6 +160,7 @@ export const AuctionContainer: React.FC<AuctionProps> = ({
         {data?.result?.map((card) => (
           <AuctionCard
             key={card.id}
+            href={`/auction/${card.id}`}
             title={card.title}
             description={card.description}
             image={card.image}

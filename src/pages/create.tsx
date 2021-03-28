@@ -19,9 +19,10 @@ import { Button } from '@components/ui/Button';
 import { composeValidators, required } from '@utils/validators';
 import { base64ArrayBuffer, convertToHex } from '@utils/helpers';
 import { getStorageInfo, useAccountPkh, useTezos } from '@utils/dapp';
-import { FA2_TOKEN_ADDRESS, MARKETPLACE_TOKEN_ADDRESS } from '@utils/defaults';
+import { AUCTION_TOKEN_ADDRESS, FA2_TOKEN_ADDRESS, MARKETPLACE_TOKEN_ADDRESS } from '@utils/defaults';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { MichelsonMap } from '@taquito/michelson-encoder';
+import BigNumber from 'bignumber.js';
 
 const IPFS = require('ipfs-mini');
 
@@ -43,13 +44,14 @@ type FormValues = {
   price?: number
   startPrice?: number
   bidStep?: number
+  lifeTime?: number
   bidTime?: number
 };
 
 const Create: React.FC = () => {
   const tezos = useTezos();
   const accountPkh = useAccountPkh();
-  const [isMarketplace, setIsMarketplace] = useState(false);
+  const [isAuction, setIsAuction] = useState(false);
   const { t } = useTranslation(['common', 'home']);
   const [imageIpfs, setImageIpfs] = useState<string | null>(null);
 
@@ -80,36 +82,71 @@ const Create: React.FC = () => {
     values: FormValues,
     form: FormApi<FormValues>,
   ) => {
-    console.log(form);
-    if (!tezos) {
-      return;
+    try {
+      if (tezos) {
+        const firstStage = {
+          link: imageIpfs,
+          title: values.name,
+          description: values.description,
+        };
+        const json = JSON.stringify(firstStage);
+        const hex = convertToHex(json);
+
+        const contract = await tezos.wallet.at(FA2_TOKEN_ADDRESS);
+        const tokenMD = MichelsonMap.fromLiteral({ metadata: hex });
+        const operation = await contract.methods.mint_token(tokenMD).send();
+        await operation?.confirmation();
+
+        const faStorage = await getStorageInfo(
+          tezos,
+          FA2_TOKEN_ADDRESS,
+        );
+        const { lastTokenId } = faStorage;
+        const neededTokenId = +lastTokenId - 1;
+        const operationApprove = await contract.methods.update_operators([{
+          add_operator: {
+            owner: accountPkh,
+            operator: !isAuction ? MARKETPLACE_TOKEN_ADDRESS : AUCTION_TOKEN_ADDRESS,
+            token_id: neededTokenId,
+          },
+        }]).send();
+        await operationApprove.confirmation();
+
+        if (!isAuction) {
+          if (!values.price) return;
+          const contractMarketplace = await tezos.wallet.at(MARKETPLACE_TOKEN_ADDRESS);
+          const operationExhibit = await contractMarketplace
+            .methods
+            .exhibitToken(
+              neededTokenId,
+              new BigNumber(values?.price).multipliedBy(new BigNumber(10).pow(6)),
+            )
+            .send();
+          await operationExhibit.confirmation();
+        } else {
+          if (!values.startPrice || !values.bidStep || !values.bidTime) return;
+          const contractAuction = await tezos.wallet.at(AUCTION_TOKEN_ADDRESS);
+          const operationExhibit = await contractAuction
+            .methods
+            .submitForAuction(
+              neededTokenId,
+              new BigNumber(values.startPrice).multipliedBy(new BigNumber(10).pow(6)),
+              new BigNumber(values.bidStep).multipliedBy(new BigNumber(10).pow(6)),
+              values.lifeTime,
+              values.bidTime,
+            )
+            .send();
+          await operationExhibit.confirmation();
+
+          // @ts-ignore
+          // eslint-disable-next-line @typescript-eslint/no-implied-eval
+          setTimeout(form.restart);
+        }
+      }
+    } catch (error) {
+      console.log(error);
     }
-
-    const firstStage = {
-      link: imageIpfs,
-      title: values.name,
-      description: values.description,
-    };
-    const json = JSON.stringify(firstStage);
-    const hex = convertToHex(json);
-    console.log('hex', hex);
-    const contract = await tezos?.wallet.at(FA2_TOKEN_ADDRESS);
-    const tokenMD = MichelsonMap.fromLiteral({ metadata: hex });
-    const operation = await contract?.methods.mint_token(tokenMD).send();
-    await operation?.confirmation();
-
-    const faStorage = await getStorageInfo(
-      tezos,
-      FA2_TOKEN_ADDRESS,
-    );
-    const { lastTokenId } = faStorage;
-    const neededTokenId = +lastTokenId - 1;
-
-    const operationApprove = await contract?.methods.update_operators('add_operator', accountPkh, MARKETPLACE_TOKEN_ADDRESS, neededTokenId).send();
-    await operationApprove.confirmation();
-
-    console.log('hex added');
-  }, [accountPkh, imageIpfs, tezos]);
+  }, [accountPkh, imageIpfs, isAuction, tezos]);
 
   return (
     <BaseLayout className={s.container}>
@@ -200,12 +237,12 @@ const Create: React.FC = () => {
                     Sale NFT on auction (not fix price)
                   </span>
                   <Toggle
-                    defaultChecked={isMarketplace}
+                    defaultChecked={isAuction}
                     icons={false}
-                    onChange={() => setIsMarketplace(!isMarketplace)}
+                    onChange={() => setIsAuction(!isAuction)}
                   />
                 </div>
-                {!isMarketplace ? (
+                {!isAuction ? (
                   <Field
                     name="price"
                     validate={composeValidators(
@@ -254,6 +291,23 @@ const Create: React.FC = () => {
                           className={s.input}
                           label="Bid step (in XTZ)"
                           placeholder="1"
+                          error={(meta.touched && meta.error) || meta.submitError}
+                          success={!meta.error && meta.touched && !meta.submitError}
+                        />
+                      )}
+                    </Field>
+                    <Field
+                      name="lifeTime"
+                      validate={composeValidators(
+                        required,
+                      )}
+                    >
+                      {({ input, meta }) => (
+                        <Input
+                          {...input}
+                          className={s.input}
+                          label="Sum lifetime (in minutes)"
+                          placeholder="60"
                           error={(meta.touched && meta.error) || meta.submitError}
                           success={!meta.error && meta.touched && !meta.submitError}
                         />

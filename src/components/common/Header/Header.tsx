@@ -61,9 +61,8 @@ export const Header: React.FC<HeaderProps> = ({
             ))}
           </nav>
           <div className={s.buttons}>
-            <Button theme="green">Create</Button>
+            <Button theme="green" href="/create">Create</Button>
             <ConnectWallet className={s.button} />
-            {/* <Button className={s.button}>Connect wallet</Button> */}
           </div>
         </Row>
       </Container>
