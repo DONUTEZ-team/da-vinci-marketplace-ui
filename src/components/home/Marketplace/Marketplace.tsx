@@ -72,7 +72,12 @@ export const Marketplace: React.FC<MarketplaceProps> = ({ className }) => (
       <Row>
         <Heading title="Marketplace" items={58} />
         <MarketplaceContainer cards={content} />
-        <Button className={s.button}>All items (52)</Button>
+        <Button
+          href="/marketplace"
+          className={s.button}
+        >
+          All items (52)
+        </Button>
       </Row>
     </Container>
     <BackgroundIcon className={s.icon} />

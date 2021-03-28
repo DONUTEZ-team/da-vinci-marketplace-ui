@@ -73,7 +73,12 @@ export const Auction: React.FC<AuctionProps> = ({ className }) => (
       <Row>
         <Heading title="Auction" items={13} theme="orange" />
         <AuctionContainer cards={content} />
-        <Button className={s.button}>All items (13)</Button>
+        <Button
+          href="/auction"
+          className={s.button}
+        >
+          All items (13)
+        </Button>
       </Row>
     </Container>
   </section>
