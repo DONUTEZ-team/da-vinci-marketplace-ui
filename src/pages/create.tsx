@@ -84,6 +84,7 @@ const Create: React.FC = () => {
   ) => {
     try {
       if (tezos) {
+        console.log('values.price', values.price);
         const firstStage = {
           link: imageIpfs,
           title: values.name,
@@ -114,12 +115,13 @@ const Create: React.FC = () => {
 
         if (!isAuction) {
           if (!values.price) return;
+          console.log('values.price2', values.price);
           const contractMarketplace = await tezos.wallet.at(MARKETPLACE_TOKEN_ADDRESS);
           const operationExhibit = await contractMarketplace
             .methods
             .exhibitToken(
-              neededTokenId,
               new BigNumber(values?.price).multipliedBy(new BigNumber(10).pow(6)),
+              neededTokenId,
             )
             .send({ amount: 500000, mutez: true });
           await operationExhibit.confirmation();
