@@ -121,7 +121,7 @@ const Create: React.FC = () => {
               neededTokenId,
               new BigNumber(values?.price).multipliedBy(new BigNumber(10).pow(6)),
             )
-            .send();
+            .send({ amount: 500000, mutez: true });
           await operationExhibit.confirmation();
         } else {
           if (!values.startPrice || !values.bidStep || !values.bidTime) return;
@@ -135,7 +135,7 @@ const Create: React.FC = () => {
               values.lifeTime,
               values.bidTime,
             )
-            .send();
+            .send({ amount: 500000, mutez: true });
           await operationExhibit.confirmation();
 
           // @ts-ignore
