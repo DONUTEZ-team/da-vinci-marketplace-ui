@@ -15,7 +15,7 @@ export type MarketplaceCardProps = {
     name: string
     image: string
   }
-  price: number
+  price: string
   isSold?: boolean
   className?: string
 };

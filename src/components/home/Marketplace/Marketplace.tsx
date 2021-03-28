@@ -4,63 +4,9 @@ import cx from 'classnames';
 import { MarketplaceContainer } from '@containers/Marketplace';
 import { Container } from '@components/ui/Container';
 import { Row } from '@components/ui/Row';
-import { Button } from '@components/ui/Button';
-import { Heading } from '@components/ui/Heading';
 import BackgroundIcon from '@icons/BackgroundHomeMarketplace.svg';
 
 import s from './Marketplace.module.sass';
-
-const content = [
-  {
-    id: 0,
-    title: 'incredibly rare shit right here.',
-    href: '/marketplace-single',
-    description: 'A small desciption about the NFT token on a couple of lins',
-    image: '/images/Marketplace1.jpg',
-    author: {
-      image: '/images/User1.jpg',
-      name: 'John Smith',
-    },
-    price: 120,
-  },
-  {
-    id: 1,
-    title: 'Bone Masked Girl no.1',
-    href: '/marketplace-single',
-    description: 'Its plant blooms when it is absorbing solar energy. It stays...',
-    image: '/images/Marketplace2.jpg',
-    author: {
-      image: '/images/User2.jpg',
-      name: 'Alex Trainer',
-    },
-    price: 40.324,
-  },
-  {
-    id: 2,
-    title: 'Hands on Hands Collectible',
-    href: '/marketplace-single',
-    description: 'The seed slowly grows larger. ',
-    image: '/images/Marketplace3.jpg',
-    author: {
-      image: '/images/User3.jpg',
-      name: 'Carlos Mayve',
-    },
-    price: 80000,
-    isSold: true,
-  },
-  {
-    id: 3,
-    title: 'Rarible Lighter',
-    href: '/marketplace-single',
-    description: 'Purchase includes link to 4k png download.',
-    image: '/images/Marketplace4.jpg',
-    author: {
-      image: '/images/User4.jpg',
-      name: 'Tratus Sheur',
-    },
-    price: 32893,
-  },
-];
 
 type MarketplaceProps = {
   className?: string
@@ -70,14 +16,7 @@ export const Marketplace: React.FC<MarketplaceProps> = ({ className }) => (
   <section className={cx(s.root, className)}>
     <Container>
       <Row>
-        <Heading title="Marketplace" items={58} />
-        <MarketplaceContainer cards={content} />
-        <Button
-          href="/marketplace"
-          className={s.button}
-        >
-          All items (52)
-        </Button>
+        <MarketplaceContainer isHome />
       </Row>
     </Container>
     <BackgroundIcon className={s.icon} />

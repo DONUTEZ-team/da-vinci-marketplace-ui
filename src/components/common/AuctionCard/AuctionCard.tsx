@@ -15,7 +15,8 @@ export type AuctionCardProps = {
     name: string
     image: string
   }
-  lastBid: number
+  lastBid: string
+  minBidStep: string
   timeLeft: number
   isSold?: boolean
   className?: string
@@ -28,6 +29,7 @@ export const AuctionCard: React.FC<AuctionCardProps> = ({
   image,
   author,
   lastBid,
+  minBidStep,
   timeLeft,
   isSold = false,
   className,
@@ -48,6 +50,14 @@ export const AuctionCard: React.FC<AuctionCardProps> = ({
         Last bid:
         <span className={s.bid}>
           {lastBid}
+          {' '}
+          XTZ
+        </span>
+      </div>
+      <div className={s.bidWrapper}>
+        Min Bid Step:
+        <span className={cx(s.bid, s.bidStep)}>
+          {minBidStep}
           {' '}
           XTZ
         </span>

@@ -3,14 +3,14 @@ import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { NextSeo } from 'next-seo';
 
-import { AuctionContainer } from '@containers/Auction';
+import { MarketplaceContainer } from '@containers/Marketplace';
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@components/ui/Container';
 import { Row } from '@components/ui/Row';
 
 import s from '@styles/Home.module.sass';
 
-const AuctionPage: React.FC = () => {
+const MarketplacePage: React.FC = () => {
   const { t } = useTranslation(['common', 'home']);
 
   return (
@@ -25,7 +25,7 @@ const AuctionPage: React.FC = () => {
       />
       <Container>
         <Row>
-          <AuctionContainer />
+          <MarketplaceContainer />
         </Row>
       </Container>
     </BaseLayout>
@@ -38,4 +38,4 @@ export const getStaticProps = async ({ locale }: { locale: string }) => ({
   },
 });
 
-export default AuctionPage;
+export default MarketplacePage;

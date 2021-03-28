@@ -31,6 +31,7 @@ export const AccountButton: React.FC<AccountButtonProps> = ({
   return (
     <div className={s.wrapper} onMouseLeave={closeWindow}>
       <Link href="/my-account">
+        {/* eslint-disable-next-line jsx-a11y/mouse-events-have-key-events */}
         <a className={cx(s.root, className)} onMouseOver={openWindow}>
           <span className={s.balance}>
             {balance}
