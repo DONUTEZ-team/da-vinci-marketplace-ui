@@ -50,8 +50,6 @@ export const ConnectWallet: React.FC<ConnectWalletProps> = ({ className }) => {
     }
   }, [ready, connect]);
 
-  console.log('accountPkh', accountPkh);
-
   return (ready && accountPkh) ? (
     <AccountButton
       balance={balance}

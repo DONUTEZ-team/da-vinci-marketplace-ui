@@ -1,6 +1,8 @@
 import React from 'react';
 import cx from 'classnames';
 
+import { shortize } from '@utils/helpers';
+
 import s from './Author.module.sass';
 
 type AuthorProps = {
@@ -16,6 +18,6 @@ export const Author: React.FC<AuthorProps> = ({ author, className }) => (
     <div className={s.image}>
       <img src={author.image} alt={author.name} />
     </div>
-    <h5 className={s.name}>{author.name}</h5>
+    <h5 className={s.name}>{shortize(author.name)}</h5>
   </div>
 );

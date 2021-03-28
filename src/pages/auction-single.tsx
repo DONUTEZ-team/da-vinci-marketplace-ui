@@ -3,14 +3,16 @@ import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { NextSeo } from 'next-seo';
 
-import { AuctionContainer } from '@containers/Auction';
+// import { MarketplaceContainer } from '@containers/_Marketplace';
 import { BaseLayout } from '@layouts/BaseLayout';
 import { Container } from '@components/ui/Container';
 import { Row } from '@components/ui/Row';
+import { Heading } from '@components/ui/Heading';
 
-import s from '@styles/Home.module.sass';
+import s from '@styles/MarketplaceSingle.module.sass';
+import { MarketplaceContent } from '@containers/AuctionContent';
 
-const AuctionPage: React.FC = () => {
+const AuctionSinglePage: React.FC = () => {
   const { t } = useTranslation(['common', 'home']);
 
   return (
@@ -24,18 +26,20 @@ const AuctionPage: React.FC = () => {
         }}
       />
       <Container>
-        <Row>
-          <AuctionContainer />
+        <Row className={s.row}>
+          <MarketplaceContent />
+          <Heading title="More by this author" />
+          {/* <MarketplaceContainer cards={content} /> */}
         </Row>
       </Container>
     </BaseLayout>
   );
 };
 
-export const getStaticProps = async ({ locale }: { locale: string }) => ({
+export const getServerSideProps = async ({ locale }: { locale: string }) => ({
   props: {
     ...await serverSideTranslations(locale, ['common', 'home']),
   },
 });
 
-export default AuctionPage;
+export default AuctionSinglePage;

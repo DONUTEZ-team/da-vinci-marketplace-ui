@@ -41,7 +41,8 @@ export const Card: React.FC<CardProps> = ({
       className={compoundClassName}
     >
       {href && (
-        <Link href="/marketplace-single">
+        <Link href={href}>
+          {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
           <a className={s.link} />
         </Link>
       )}

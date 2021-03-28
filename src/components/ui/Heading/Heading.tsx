@@ -45,7 +45,7 @@ export const Heading: React.FC<HeadingProps> = ({
       <Tag theme={theme} className={s.tag}>
         {items}
         {' '}
-        items
+        {items === 1 ? 'item' : 'items'}
       </Tag>
       )}
     </div>
