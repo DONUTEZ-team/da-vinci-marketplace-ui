@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import cx from 'classnames';
 import { Button } from '@components/ui/Button';
 import { Author } from '@components/common/Author';
@@ -82,6 +82,29 @@ export const MarketplaceContent: React.FC = () => {
     { refreshInterval: BLOCK_INTERVAL },
   );
 
+  const [imageFinal, setImageFinal] = useState('');
+
+  const download = useCallback(() => {
+    const url = data?.image;
+    if (!url) return;
+
+    const req = new XMLHttpRequest();
+    // @ts-ignore
+    req.responseType = 'text/html';
+
+    req.onload = () => {
+      const img = new Image();
+      img.onload = function onload() {
+        document.body.appendChild(img);
+      };
+
+      setImageFinal(req.response);
+    };
+
+    req.open('GET', url, true);
+    req.send();
+  }, [data?.image]);
+
   const buyHandler = useCallback(async () => {
     const contract = await tezos?.wallet.at(MARKETPLACE_TOKEN_ADDRESS);
     const operation = await contract?.methods
@@ -97,11 +120,13 @@ export const MarketplaceContent: React.FC = () => {
     return <>Loading...</>;
   }
 
+  download();
+
   return (
     <div className={s.root}>
       <div className={s.imageWrapper}>
         <img
-          src={data?.status === 2 ? '/images/Marketplace1.jpg' : data?.image}
+          src={data?.status === 2 ? '/images/Marketplace1.jpg' : imageFinal}
           alt={data?.status === 2 ? 'XXXXX' : data?.title}
         />
       </div>
