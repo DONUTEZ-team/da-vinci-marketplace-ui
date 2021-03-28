@@ -71,6 +71,7 @@ const contentAuction = [
       name: 'Daria Protsova',
     },
     lastBid: '120',
+    minBidStep: '120',
     timeLeft: 12,
   },
   {
@@ -83,6 +84,7 @@ const contentAuction = [
       name: 'Cyril Tasher',
     },
     lastBid: '28',
+    minBidStep: '28',
     timeLeft: 56,
   },
   {
@@ -95,6 +97,7 @@ const contentAuction = [
       name: 'Abstract Person',
     },
     lastBid: '1900',
+    minBidStep: '1900',
     timeLeft: 38,
   },
   {
@@ -107,6 +110,7 @@ const contentAuction = [
       name: 'Abstract Person',
     },
     lastBid: '24.123',
+    minBidStep: '24.123',
     timeLeft: 13,
   },
 ];
