@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react';
 import cx from 'classnames';
-import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 
 import { ConnectWallet } from '@containers/ConnectWallet';
@@ -19,26 +18,20 @@ type HeaderProps = {
 export const Header: React.FC<HeaderProps> = ({
   className,
 }) => {
-  const { t } = useTranslation(['common']);
-
   const content = useMemo(() => ([
     {
       href: '/',
-      label: t('common:Home'),
+      label: 'Home',
     },
     {
       href: '/marketplace',
-      label: t('common:Marketplace'),
+      label: 'Marketplace',
     },
     {
       href: '/auction',
-      label: t('common:Auction'),
+      label: 'Auction',
     },
-    {
-      href: '/account',
-      label: t('common:My account'),
-    },
-  ]), [t]);
+  ]), []);
 
   return (
     <header className={cx(s.root, className)}>
