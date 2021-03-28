@@ -1,9 +1,12 @@
-DaVinci.png![image](https://user-images.githubusercontent.com/63460724/112757648-558c1200-8ff3-11eb-987d-3494e84270fa.png)
+[image](https://user-images.githubusercontent.com/63460724/112757648-558c1200-8ff3-11eb-987d-3494e84270fa.png)
+
 
 
 ##DaVinci Marketplace base on Tezos Blockchain
 
 Live preview: https://da-vinci-marketplace-ui.vercel.app/
+
+
 
 
 **Front-end:**
@@ -15,6 +18,8 @@ Live preview: https://da-vinci-marketplace-ui.vercel.app/
 - Taquito
 - IPFS Images
 - React SVG
+
+
 
 
 **Contact:**
