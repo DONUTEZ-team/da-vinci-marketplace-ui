@@ -124,13 +124,10 @@ export const AuctionContent: React.FC = () => {
   ) => {
     try {
       if (tezos) {
-        console.log('inside');
         const contract = await tezos?.wallet.at(AUCTION_TOKEN_ADDRESS);
-        console.log('contract');
         const operation = await contract?.methods
-          .makeBid(data?.tokenId, values.bid)
+          .makeBid(values.bid, data?.tokenId)
           .send();
-        console.log('operation');
         await operation?.confirmation();
 
         // @ts-ignore
