@@ -22,7 +22,7 @@ const content = [
       image: '/images/User1.jpg',
       name: 'John Smith',
     },
-    price: 120,
+    price: '120',
   },
   {
     id: 1,
@@ -33,7 +33,7 @@ const content = [
       image: '/images/User2.jpg',
       name: 'Alex Trainer',
     },
-    price: 40.324,
+    price: '40.324',
   },
   {
     id: 2,
@@ -44,7 +44,7 @@ const content = [
       image: '/images/User3.jpg',
       name: 'Carlos Mayve',
     },
-    price: 80000,
+    price: '80000',
     isSold: true,
   },
   {
@@ -56,7 +56,7 @@ const content = [
       image: '/images/User4.jpg',
       name: 'Tratus Sheur',
     },
-    price: 32893,
+    price: '32893',
   },
 ];
 
@@ -70,7 +70,7 @@ const contentAuction = [
       image: '/images/User4.jpg',
       name: 'Daria Protsova',
     },
-    lastBid: 120,
+    lastBid: '120',
     timeLeft: 12,
   },
   {
@@ -82,7 +82,7 @@ const contentAuction = [
       image: '/images/User5.jpg',
       name: 'Cyril Tasher',
     },
-    lastBid: 28,
+    lastBid: '28',
     timeLeft: 56,
   },
   {
@@ -94,7 +94,7 @@ const contentAuction = [
       image: '/images/User6.jpg',
       name: 'Abstract Person',
     },
-    lastBid: 1900,
+    lastBid: '1900',
     timeLeft: 38,
   },
   {
@@ -106,7 +106,7 @@ const contentAuction = [
       image: '/images/User7.jpg',
       name: 'Abstract Person',
     },
-    lastBid: 24.123,
+    lastBid: '24.123',
     timeLeft: 13,
   },
 ];
