@@ -84,7 +84,6 @@ const Create: React.FC = () => {
   ) => {
     try {
       if (tezos) {
-        console.log('values.price', values.price);
         const firstStage = {
           link: imageIpfs,
           title: values.name,
@@ -103,7 +102,7 @@ const Create: React.FC = () => {
           FA2_TOKEN_ADDRESS,
         );
         const { lastTokenId } = faStorage;
-        const neededTokenId = +lastTokenId === 0 ? +lastTokenId : +lastTokenId - 1;
+        const neededTokenId = +lastTokenId - 1;
         const operationApprove = await contract.methods.update_operators([{
           add_operator: {
             owner: accountPkh,
@@ -115,15 +114,14 @@ const Create: React.FC = () => {
 
         if (!isAuction) {
           if (!values.price) return;
-          console.log('values.price2', values.price);
           const contractMarketplace = await tezos.wallet.at(MARKETPLACE_TOKEN_ADDRESS);
           const operationExhibit = await contractMarketplace
             .methods
             .exhibitToken(
-              new BigNumber(values?.price).multipliedBy(new BigNumber(10).pow(6)),
               neededTokenId,
+              new BigNumber(values?.price).multipliedBy(new BigNumber(10).pow(6)),
             )
-            .send({ amount: 500000, mutez: true });
+            .send();
           await operationExhibit.confirmation();
         } else {
           if (!values.startPrice || !values.bidStep || !values.bidTime) return;
@@ -131,13 +129,13 @@ const Create: React.FC = () => {
           const operationExhibit = await contractAuction
             .methods
             .submitForAuction(
-              values.bidTime,
-              new BigNumber(values.startPrice).multipliedBy(new BigNumber(10).pow(6)),
-              values.lifeTime,
-              new BigNumber(values.bidStep).multipliedBy(new BigNumber(10).pow(6)),
               neededTokenId,
+              new BigNumber(values.startPrice).multipliedBy(new BigNumber(10).pow(6)),
+              new BigNumber(values.bidStep).multipliedBy(new BigNumber(10).pow(6)),
+              values.lifeTime,
+              values.bidTime,
             )
-            .send({ amount: 500000, mutez: true });
+            .send();
           await operationExhibit.confirmation();
 
           // @ts-ignore
