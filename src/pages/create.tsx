@@ -103,7 +103,7 @@ const Create: React.FC = () => {
           FA2_TOKEN_ADDRESS,
         );
         const { lastTokenId } = faStorage;
-        const neededTokenId = +lastTokenId - 1;
+        const neededTokenId = +lastTokenId === 0 ? +lastTokenId : +lastTokenId - 1;
         const operationApprove = await contract.methods.update_operators([{
           add_operator: {
             owner: accountPkh,
@@ -131,11 +131,11 @@ const Create: React.FC = () => {
           const operationExhibit = await contractAuction
             .methods
             .submitForAuction(
-              neededTokenId,
-              new BigNumber(values.startPrice).multipliedBy(new BigNumber(10).pow(6)),
-              new BigNumber(values.bidStep).multipliedBy(new BigNumber(10).pow(6)),
-              values.lifeTime,
               values.bidTime,
+              new BigNumber(values.startPrice).multipliedBy(new BigNumber(10).pow(6)),
+              values.lifeTime,
+              new BigNumber(values.bidStep).multipliedBy(new BigNumber(10).pow(6)),
+              neededTokenId,
             )
             .send({ amount: 500000, mutez: true });
           await operationExhibit.confirmation();
