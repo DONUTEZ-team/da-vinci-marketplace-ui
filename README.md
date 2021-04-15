@@ -2,7 +2,7 @@
 
 
 
-##DaVinci Marketplace base on Tezos Blockchain
+##DaVinci Marketplace based on Tezos Blockchain
 
 Live preview: https://da-vinci-marketplace-ui.vercel.app/
 
@@ -10,14 +10,13 @@ Live preview: https://da-vinci-marketplace-ui.vercel.app/
 
 
 **Front-end:**
-- React.js
-- Next.js
-- SASS
+- [Next.js](https://nextjs.org/) (React.js)
+- [TypeScript](https://www.typescriptlang.org/)
+- [SASS](https://sass-lang.com/)
 - Internationalization
-- Temple - Tezos Wallet
-- Taquito
+- [Temple - Tezos Wallet](https://github.com/madfish-solutions/templewallet-dapp)
+- [Taquito](https://github.com/ecadlabs/taquito)
 - IPFS Images
-- React SVG
 
 
 
